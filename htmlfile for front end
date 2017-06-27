@@ -1,0 +1,139 @@
+{% extends "_base.htm" %}
+{% block title %}
+Calculations
+{% endblock %}
+{% block pageblock %}
+
+<div id="stats">
+<h7>Hd00240@surrey.uk.ak</b>&nbsp;</h7>
+<h7>By Hud Seidu Daannaa "6396082" 2017</b>&nbsp;</h7>
+<h2>&nbsp</h2>
+<h2><b>AWS LAMBDA                 &nbsp;</b></b></h2>
+<h4>A multi-cloud application which computes VaR at riskfor some well known companies in the stock markets.</br></h4> 
+<h4>This page uses the scalability of AWS LAMBDA to compute Monte Carlo together with two other methods </br></h4>
+<h4>The pages takes four parameters together with a selecdted company using radio buttons </br></h4>
+<h4>The results are displayed below.</br></h4> 
+<h2>&nbsp</h2>
+
+<h3>Click here for => <a href="https://hudapp2-158221.appspot.com/index.htm">AWS EC2</a>.</br></h3>
+</div>
+
+<form id="stats" method="post" action="/random">
+
+<h3><b>Seclect a Company:                                                                      </b></br></h3>
+
+<h5>                                         <input type="radio"  name="com" value="amazon" checked>IBM<br>
+                                         <input type="radio"  name="com" value="google">     Google<br>
+                                         <input type="radio"  name="com" value="apple">       Apple<br>
+                                         <input type="radio"  name="com" value="amazon">     Amazon<br>
+                                         <input type="radio"  name="com" value="oracle">     Oracle<br> </h5>
+                                         
+<h4><b>Input Parameters for Computations :                                                        </b></br></h4>
+
+<!--<h4>Company                         <br>     <input type="text"   name="com" />                   <br/></h4> -->
+<h4>Monte Samples     (M)               <br>     <input type="text"   name="M" />                     <br/></h4>
+<h4>Data Points       (T)               <br>     <input type="text"   name="T" />                     <br/></h4>
+<h4>AMT Of Investment ($)               <br>     <input type="text"   name="investment" />            <br/></h4>
+<h4>Number Of         (R)</br>Resources <br>     <input type="text"   name="R_" />                    <br/></h4>
+<h4>&nbsp</h4>
+<h3>Confirm                             <br>     <input type="submit" name="ok" value="Submit" />   <br/></h3>
+<input type="submit" name='cancel' value="Cancel" 
+onclick="window.location='/'; return false;"/><br/></h4>
+</form>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <div id="chart_div"></div>
+  
+
+
+	<div id="up" style="text-align: right;">
+		<h3><a href="index.htm">back to first page</a><br/></h3>
+	</div>
+	<p id="demo" style="display : none;">{{note}}</p>
+
+	
+	<div id="up">
+
+
+
+
+<script> 
+
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
+google.charts.setOnLoadCallback(drawBasic2);
+function drawBasic() {
+	
+      var text = document.getElementById("demo").innerHTML;
+      list = text.split(",");
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Rseries');
+ 
+      for (i=list.length-1; i>=0; i--)
+{
+      data.addRow([i,parseFloat(list[i])]);
+}
+      var options = {
+        hAxis: {
+          title: 'Time'
+        },
+        vAxis: {
+          title: 'Difference'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+
+
+
+</script>
+
+
+
+	</div>
+
+
+
+
+
+<h2>&nbsp</h2>
+<h3><b>Results of Mean "Average" computation with regards to VAR over R" </b></br></h3>
+<h3><b>Hence below is the final collated results for 6 VaR results  </b></br></h3>
+<h2>&nbsp</h2>
+ {% if note1 %}
+<h3> {{ note1 }}</h3>
+{% endif %}
+</div>
+
+{% if note2 %}
+<h3> {{ note2 }}</h3>
+{% endif %}
+</div>
+
+{% if note3 %}
+<h3> {{ note3 }}</h3>
+{% endif %}
+</div>
+
+{% if note4 %}
+<h3 >{{ note4 }}</h3>
+{% endif %}
+</div>
+
+{% if note5 %}
+<h3> {{ note5 }}</h3>
+{% endif %}
+</div>
+
+{% if note6 %}
+<h3> {{ note6 }}</h3>
+{% endif %}
+</div>
+{% endblock %}
