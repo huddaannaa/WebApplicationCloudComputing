@@ -1,12 +1,51 @@
-# MULTI-SCALABLE-CLOUD-APPLICATION-VALUE-AT-RISK-VAR-
-## This contains Front and Backend code for AWS LAMBDA. One can contact me for EC2's front and backend source because i will need to reconstruct and make amends to the source. This is because it entails a user to login with credentions for AWS, Keypairs and other security access keys source-code for the project (Scalable multi-Cloud application, that computes Value at Risk for some well-known companies listed on stock markets
+# Multi-Scalable Cloud Application Value at Risk (VaR)
 
-#### Value At Risk (VAR): VAR is the calculation of risk of an investment. Resultant computations show how a given investment will climb or fall over some time span, with some given market conditions. Due to VAR’s computational expense, power, time and use of large random values for computations, we incorporate a multi cloud architecture together with scalable services. Using the three VAR methods namely, historical, covariance and Monte Carlo. The proposed system is made up of public cloud providers, Amazon and Google, rendering services such as Amazon Web Services and Google app engine. The respective companies offer On-demand self-service, broad network access, rapid elasticity, measured service and resource pooling in accordance to NIST. The Google app engine (GAE) is a public cloud service managed by google. It falls into the Platform as a service category (PaaS) and supports a variety of programming languages like python, we will run a source code at the frontend that  will take specific inputs and display output in a required manner to the a given consumer. AWS lambda is also a cloud computing service which lets consumers run code or scripts to accomplish certain tasks or functions and is categorized as a PaaS (Platform as a service) Just like GAE.
+This document details a multi-scalable cloud application designed to compute Value at Risk (VaR) for well-known companies listed on stock markets. The application employs a combination of front-end and back-end code for AWS Lambda, with additional components running on Amazon EC2. For the EC2 source code, please contact me directly as it requires reconstruction and amendments. This application involves user authentication with AWS credentials, key pairs, and other security access keys.
 
-#### 1) Historical: This is calculated by finding the return series, using the adjacent close of a given company. The next step is to sort the values from largest profit to the largest loss, taking the total number of data points we calculate the 95 and 99 percentages to attain the VAR at 95 and 95 percentages 
+## Introduction
 
-#### 2) Covariance: We compute the mean and standard deviation (stdev) to fit   the give formula with a set investment, where D is 1.65 at 95 and 2.33 at 99: −(𝑚𝑒𝑎𝑛 +(𝐷) ∗𝜎))∗𝐼𝑛𝑣𝑒𝑠𝑡𝑚𝑒𝑛𝑡 
- 
-#### 3) Monte Carlo: Having the mean and stdev from the previous step, we use the python function “random. Gauss” to generate random number (q).  ‘q’ is then used together with the most recent price of the adjacent close from a given company (p) to fit the formula: 𝑛 = (1 +𝑞)∗𝑝 The resultant n produces a new price list, which is run through the historical step to attain VAR at 95 and 99 percentages. 
+Value at Risk (VaR) is a statistical technique used to measure the risk of an investment. It quantifies the potential loss in value of an investment portfolio over a defined period for a given confidence interval. Due to the computational expense, power requirements, and the use of large random values, this application leverages a multi-cloud architecture and scalable services. It utilizes three VaR calculation methods: historical, covariance, and Monte Carlo.
 
- 
+## Architecture
+
+The proposed system integrates public cloud providers Amazon Web Services (AWS) and Google App Engine (GAE). These services offer on-demand self-service, broad network access, rapid elasticity, measured service, and resource pooling in accordance with NIST standards. 
+
+### Google App Engine (GAE)
+
+GAE is a public cloud service managed by Google, falling into the Platform as a Service (PaaS) category. It supports various programming languages, including Python. The front-end source code runs on GAE, taking specific inputs and displaying outputs to the user.
+
+### AWS Lambda
+
+AWS Lambda is a cloud computing service that allows users to run code or scripts to perform certain tasks or functions. It is also categorized as PaaS, similar to GAE.
+
+## VaR Calculation Methods
+
+### 1. Historical Method
+
+The historical method calculates VaR by analyzing the return series using the adjacent closing prices of a given company. The steps are as follows:
+
+1. Find the return series.
+2. Sort the values from the largest profit to the largest loss.
+3. Calculate the total number of data points.
+4. Determine the 95th and 99th percentiles to obtain VaR at 95% and 99% confidence levels.
+
+### 2. Covariance Method
+
+The covariance method involves computing the mean and standard deviation (stdev) to fit the VaR formula with a set investment. The formula used is:
+\[ \text{VaR} = -(\text{mean} + D \times \sigma) \times \text{Investment} \]
+Where \( D \) is 1.65 for 95% confidence and 2.33 for 99% confidence.
+
+### 3. Monte Carlo Method
+
+The Monte Carlo method uses the mean and stdev from the covariance method. The steps include:
+
+1. Use the Python function `random.gauss` to generate random numbers (\( q \)).
+2. Apply \( q \) with the most recent adjacent closing price (\( p \)) of a given company to the formula:
+\[ n = (1 + q) \times p \]
+3. Generate a new price list, which is then processed through the historical method to obtain VaR at 95% and 99% confidence levels.
+
+## Conclusion
+
+This multi-scalable cloud application efficiently computes VaR using a combination of AWS Lambda and Google App Engine. By leveraging the strengths of these platforms, the application ensures rapid and reliable computations essential for assessing investment risk.
+
+For more information or to access the EC2 source code, please contact me directly.
